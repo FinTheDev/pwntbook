@@ -15,6 +15,10 @@ def shuffle_cards():
         with open("assets/cards.json", "r") as file:
             config.cards = json.load(file)
 
+        if not config.cards:
+            with open("assets/demo.json", "r") as file:
+                config.cards = json.load(file)
+
         config.shuffled = False
         config.index = 0
     else:

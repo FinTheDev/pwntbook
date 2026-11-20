@@ -20,6 +20,10 @@ def_font = pygame.font.Font("assets/fonts/LexendDeca-Regular.ttf", 28)
 with open("assets/cards.json", "r") as file:
     cards = json.load(file)
 
+if not cards:
+    with open("assets/demo.json", "r") as file:
+        cards = json.load(file)
+
 index = 0
 flipped = False
 shuffled = False
