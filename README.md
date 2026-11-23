@@ -1,6 +1,8 @@
 ![pwntbook banner](assets/images/banner.png)
 
-a simple flashcard app built with python and pygame.
+a simple flashcard app made with python and pygame.
+
+decided to make my own instead of using someone else's app.
 
 ## features
 
@@ -9,34 +11,15 @@ a simple flashcard app built with python and pygame.
 - navigate between cards
 - multiple definitions for a single word
 - progress counter
+- jump to any card using the progress counter
+- animated progress indicator
 
 ## screenshots
 
 <div align="center">
-  <img src="assets/images/word.png" width="49%">
-  <img src="assets/images/definition.png" width="49%">
+    <img src="assets/images/word.png" width="49%">
+    <img src="assets/images/definition.png" width="49%">
 </div>
-
-## installation
-
-clone the repository:
-
-```bash
-git clone https://github.com/FinTheDev/pwntbook.git
-cd pwntbook
-```
-
-install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-run pwntbook:
-
-```bash
-python main.py
-```
 
 ## controls
 
@@ -46,44 +29,72 @@ python main.py
 | `CTRL + SPACE` | shuffle |
 | `LEFT` | previous card |
 | `RIGHT` | next card |
-| `ESC` | quit |
+| `ENTER` | jump to entered card number |
+| `BACKSPACE` | delete input |
+| `ESC` | cancel counter editing / quit app |
 
-## card format
+you can click the progress counter to enter a card number and jump directly to it.
 
-you can add your own flashcards by editing `assets/cards.json`.
+## setup
+
+clone the repo:
+
+```bash
+git clone https://github.com/FinTheDev/pwntbook.git
+cd pwntbook
+```
+
+install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+run:
+
+```bash
+python main.py
+```
+
+## adding cards
+
+cards are stored in `assets/cards.json`.
 
 example:
 
 ```json
-[
-    {
-        "word": "example",
-        "definition": "a thing characteristic of its kind or illustrating a general rule"
-    }
-]
+{
+    "word": "word goes here",
+    "def": "definition goes here"
+}
 ```
 
-multiple definitions are also supported:
+multiple definitions are supported:
 
 ```json
-[
-    {
-        "word": "example",
-        "definition": [
-            "a thing characteristic of its kind",
-            "something used to illustrate a rule"
-        ]
-    }
-]
+{
+    "word": "word goes here",
+    "def": [
+        {
+            "type": "n.",
+            "meaning": "definition goes here"
+        },
+        {
+            "type": "v.",
+            "meaning": "another definition"
+        }
+    ]
+}
 ```
 
 ## built with
 
 - python
-- pygame-ce
-- pyconify
+- pygame
 - cairosvg
+- pyconify
+- lexend deca
 
-## license
+## status
 
-this project is licensed under the MIT License. see [LICENSE](LICENSE) for details.
+still working on it. more features coming soon.

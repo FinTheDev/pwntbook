@@ -5,6 +5,7 @@ class Counter:
     def __init__(self, x, y, width, total):
         self.center_x = x + width // 2
         self.rect = pygame.Rect(self.center_x - (width - 40) // 2, y, width - 40, 32)
+        self.color = config.SURFACE
         self.bar_width = width
         self.total = total
         self.font = pygame.font.Font("assets/fonts/LexendDeca-Medium.ttf", 15)
@@ -14,9 +15,21 @@ class Counter:
         self.target_progress = 0
         self.speed = 5
 
+        self.active = False
+        self.input_text = ''
+
     def update(self, index):
         self.index = index
         self.target_progress = (index + 1) / self.total
+
+    def handle_click(self, pos):
+        self.active = self.rect.collidepoint(pos)
+
+        if self.active:
+            self.input_text = ''
+            self.color = config.SURFACE_HOVER
+        else:
+            self.color = config.SURFACE
 
     def animate(self, dt):
         difference = self.target_progress - self.progress
@@ -25,21 +38,26 @@ class Counter:
     def draw(self, surface):
         pygame.draw.rect(
             surface,
-            (config.SURFACE),
+            (self.color),
             self.rect,
             border_radius=16
         )
 
+        current_value = self.input_text if self.active else str(self.index + 1)
+
+        if self.active and not current_value:
+            current_value = "_"
+
         current_text = self.font.render(
-            str(self.index + 1),
+            current_value,
             True,
-            (config.WHITE)
+            config.ACCENT if self.active else config.WHITE
         )
 
         total_text = self.font.render(
             f" / {self.total}",
             True,
-            (config.TEXT_SECONDARY)
+            config.TEXT_SECONDARY
         )
 
         current_rect = current_text.get_rect()

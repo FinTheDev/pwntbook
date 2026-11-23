@@ -16,7 +16,31 @@ while running:
             running = False
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
+            if config.counter.active:
+                if event.key == pygame.K_ESCAPE:
+                    config.counter.active = False
+                    config.counter.input_text = ''
+                    config.counter.color = config.SURFACE
+
+                elif event.key == pygame.K_RETURN:
+                    if config.counter.input_text.isdigit():
+                        number = int(config.counter.input_text)
+
+                        if 1 <= number <= config.counter.total:
+                            config.index = number - 1
+                            update_card()
+
+                    config.counter.active = False
+                    config.counter.input_text = ''
+                    config.counter.color = config.SURFACE
+
+                elif event.key == pygame.K_BACKSPACE:
+                    config.counter.input_text = config.counter.input_text[:-1]
+
+                elif event.unicode.isdigit():
+                    config.counter.input_text += event.unicode
+
+            elif event.key == pygame.K_ESCAPE:
                 running = False
                 
             elif event.key == pygame.K_SPACE and event.mod & pygame.KMOD_CTRL:
@@ -44,6 +68,8 @@ while running:
             shuffle_button.click(event.pos)
             left_button.click(event.pos)
             right_button.click(event.pos)
+
+            config.counter.handle_click(event.pos)
 
     show_back = config.flipped
 
