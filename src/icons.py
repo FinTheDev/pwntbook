@@ -9,8 +9,8 @@ left_svg = pyconify.svg("akar-icons:triangle-left-fill")
 right_svg = pyconify.svg("akar-icons:triangle-right-fill")
 
 def load_icon(svg):
-    svg = svg.replace(b"currentColor", b"#ffffff")
-    svg = svg.replace(b'fill="black"', b'fill="#ffffff"')
+    svg = svg.replace(b"currentColor", b"#F0F0F0")
+    svg = svg.replace(b'fill="black"', b'fill="#F0F0F0"')
 
     png = cairosvg.svg2png(
         bytestring=svg,

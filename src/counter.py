@@ -1,4 +1,5 @@
 import pygame
+from src import config
 
 class Counter:
     def __init__(self, x, y, width, total):
@@ -24,7 +25,7 @@ class Counter:
     def draw(self, surface):
         pygame.draw.rect(
             surface,
-            (55, 55, 55),
+            (config.SURFACE),
             self.rect,
             border_radius=16
         )
@@ -32,13 +33,13 @@ class Counter:
         current_text = self.font.render(
             str(self.index + 1),
             True,
-            (255, 255, 255)
+            (config.WHITE)
         )
 
         total_text = self.font.render(
             f" / {self.total}",
             True,
-            (130, 130, 130)
+            (config.TEXT_SECONDARY)
         )
 
         current_rect = current_text.get_rect()
@@ -63,13 +64,13 @@ class Counter:
             4
         )
 
-        pygame.draw.rect(surface, (65, 65, 65), bar_bg, border_radius=3)
+        pygame.draw.rect(surface, (config.BORDER), bar_bg, border_radius=3)
 
         bar_width = int(bar_bg.width * self.progress)
 
         pygame.draw.rect(
             surface,
-            (255, 255, 255),
+            (config.WHITE),
             (bar_bg.x, bar_bg.y, bar_width, bar_bg.height),
             border_radius=3
         )

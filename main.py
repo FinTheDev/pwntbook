@@ -47,7 +47,7 @@ while running:
 
     show_back = config.flipped
 
-    config.screen.fill((30, 30, 30))
+    config.screen.fill(config.BACKGROUND)
 
     if show_back:
         draw_definitions()

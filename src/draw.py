@@ -32,7 +32,7 @@ def draw_word():
 
     for line in lines:
         text_surface = config.word_font.render(
-            line, True, (255, 255, 255)
+            line, True, (config.WHITE)
         )
 
         text_rect = text_surface.get_rect(
@@ -73,7 +73,7 @@ def draw_definitions():
             pygame.mouse.get_pos()
         )
 
-        button_color = (85, 85, 85) if hovered else (55, 55, 55)
+        button_color = (config.SURFACE_HOVER) if hovered else (config.SURFACE)
 
         pygame.draw.rect(
             config.screen,
@@ -83,7 +83,7 @@ def draw_definitions():
         )
 
         label_surface = config.def_font.render(
-            label, True, (255, 255, 255)
+            label, True, (config.WHITE)
         )
 
         label_rect = label_surface.get_rect(
@@ -101,7 +101,7 @@ def draw_definitions():
 
     for line in lines:
         text_surface = config.def_font.render(
-            line, True, (255, 255, 255)
+            line, True, (config.WHITE)
         )
 
         text_rect = text_surface.get_rect(

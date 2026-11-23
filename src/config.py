@@ -12,6 +12,16 @@ pygame.display.set_caption("pwntbook")
 
 clock = pygame.time.Clock()
 
+BACKGROUND = (13, 17, 23)
+ACCENT = (106, 126, 245)
+TEXT = (240, 240, 240)
+
+TEXT_SECONDARY = (130, 130, 130)
+SURFACE = (30, 35, 43)
+SURFACE_HOVER = (45, 52, 65)
+BORDER = (48, 54, 61)
+WHITE = (255, 255, 255)
+
 flip_icon, shuffle_icon, left_icon, right_icon = load_icons()
 
 word_font = pygame.font.Font("assets/fonts/LexendDeca-Regular.ttf", 46)

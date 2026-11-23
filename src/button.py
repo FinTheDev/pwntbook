@@ -1,4 +1,5 @@
 import pygame
+from src import config
 
 class Button:
     def __init__(self, x, y, icon, action, size=48):
@@ -10,7 +11,7 @@ class Button:
         mouse_pos = pygame.mouse.get_pos()
         hovered = self.rect.collidepoint(mouse_pos)
 
-        color = (65, 65, 65) if hovered else (45, 45, 45)
+        color = (config.SURFACE_HOVER) if hovered else (config.SURFACE)
 
         pygame.draw.rect(surface, color, self.rect, border_radius=12)
 
